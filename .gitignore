@@ -1,5 +1,6 @@
-.evenv
+
 diabetes_prediction_dataset.csv
 __pycache__/
 diabetes_model.pkl
 scaler.pkl
+venv/

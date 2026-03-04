@@ -109,5 +109,6 @@ def predict_diabetes(person: Person):
     return {
         "prediction": int(prediction),
         "diabetes_probability": float(probability),
-        "calculated_bmi": round(bmi, 2)
+        "calculated_bmi": round(bmi, 2),
     }
+

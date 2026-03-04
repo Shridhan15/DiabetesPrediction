@@ -55,8 +55,7 @@ const DiabetesForm = () => {
           Please fill in your health details below
         </p>
 
-        <form onSubmit={handleSubmit} className="space-y-6">
-          {/* Personal Info */}
+        <form onSubmit={handleSubmit} className="space-y-6"> 
           <div>
             <h2 className="text-lg font-semibold text-gray-700 mb-3">
               Personal Information
@@ -83,8 +82,7 @@ const DiabetesForm = () => {
               </div>
             </div>
           </div>
-
-          {/* Medical Conditions */}
+ 
           <div>
             <h2 className="text-lg font-semibold text-gray-700 mb-3">
               Medical Conditions
@@ -116,8 +114,7 @@ const DiabetesForm = () => {
               </div>
             </div>
           </div>
-
-          {/* Lifestyle */}
+ 
           <div>
             <h2 className="text-lg font-semibold text-gray-700 mb-3">
               Lifestyle
@@ -138,8 +135,7 @@ const DiabetesForm = () => {
               </select>
             </div>
           </div>
-
-          {/* Body Measurements */}
+ 
           <div>
             <h2 className="text-lg font-semibold text-gray-700 mb-3">
               Body Measurements
@@ -169,8 +165,7 @@ const DiabetesForm = () => {
               </div>
             </div>
           </div>
-
-          {/* Lab Results */}
+ 
           <div>
             <h2 className="text-lg font-semibold text-gray-700 mb-3">
               Laboratory Results
@@ -209,8 +204,7 @@ const DiabetesForm = () => {
             Analyze Risk
           </button>
         </form>
-
-        {/* Result */}
+ 
         {result && (
           <div className="mt-8 p-6 bg-blue-50 rounded-2xl text-center">
             <h3 className="text-xl font-bold mb-2">

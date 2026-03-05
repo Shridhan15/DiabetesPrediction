@@ -4,3 +4,4 @@ __pycache__/
 diabetes_model.pkl
 scaler.pkl
 venv/
+heart.csv

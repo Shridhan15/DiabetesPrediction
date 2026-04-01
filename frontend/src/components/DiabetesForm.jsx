@@ -15,9 +15,32 @@ const DiabetesForm = () => {
   });
 
   const [result, setResult] = useState(null);
+  const [file, setFile] = useState(null);
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
+  };
+
+  const handleUpload = async () => {
+    if (!file) return alert("Upload PDF first");
+
+    const formDataUpload = new FormData();
+    formDataUpload.append("file", file);
+
+    try {
+      const res = await axios.post(
+        "http://127.0.0.1:8000/upload-report",
+        formDataUpload,
+      );
+
+      // 🔥 Auto-fill form
+      setFormData(res.data.extracted_data);
+
+      // 🔥 Show prediction directly
+      setResult(res.data);
+    } catch (err) {
+      console.error(err);
+    }
   };
 
   const handleSubmit = async (e) => {
@@ -54,8 +77,25 @@ const DiabetesForm = () => {
         <p className="text-center text-gray-500 mb-8">
           Please fill in your health details below
         </p>
+        <div>
+          <label className="label">Upload Medical Report (PDF)</label>
+          <input
+            type="file"
+            accept=".pdf"
+            onChange={(e) => setFile(e.target.files[0])}
+            className="input"
+          />
 
-        <form onSubmit={handleSubmit} className="space-y-6"> 
+          <button
+            type="button"
+            onClick={handleUpload}
+            className="mt-2 w-full bg-green-600 text-white py-2 rounded-xl hover:bg-green-700"
+          >
+            Auto-Fill from Report
+          </button>
+        </div>
+
+        <form onSubmit={handleSubmit} className="space-y-6">
           <div>
             <h2 className="text-lg font-semibold text-gray-700 mb-3">
               Personal Information
@@ -82,7 +122,7 @@ const DiabetesForm = () => {
               </div>
             </div>
           </div>
- 
+
           <div>
             <h2 className="text-lg font-semibold text-gray-700 mb-3">
               Medical Conditions
@@ -114,7 +154,7 @@ const DiabetesForm = () => {
               </div>
             </div>
           </div>
- 
+
           <div>
             <h2 className="text-lg font-semibold text-gray-700 mb-3">
               Lifestyle
@@ -135,7 +175,7 @@ const DiabetesForm = () => {
               </select>
             </div>
           </div>
- 
+
           <div>
             <h2 className="text-lg font-semibold text-gray-700 mb-3">
               Body Measurements
@@ -165,7 +205,7 @@ const DiabetesForm = () => {
               </div>
             </div>
           </div>
- 
+
           <div>
             <h2 className="text-lg font-semibold text-gray-700 mb-3">
               Laboratory Results
@@ -204,7 +244,7 @@ const DiabetesForm = () => {
             Analyze Risk
           </button>
         </form>
- 
+
         {result && (
           <div className="mt-8 p-6 bg-blue-50 rounded-2xl text-center">
             <h3 className="text-xl font-bold mb-2">

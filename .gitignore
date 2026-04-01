@@ -5,3 +5,5 @@ diabetes_model.pkl
 scaler.pkl
 venv/
 heart.csv
+
+test_report.pdf
